@@ -49,8 +49,8 @@ export default withApiAuthRequired(async function handler(req, res) {
             ...fetchBody,
             filter: { _id: { $oid: req.body._id } },
             update: {
-              $set: {
-                body: req.body.body,
+              [req.body.action]: {
+                likes: req.body.userId,
               },
             },
           }),
